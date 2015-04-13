@@ -1,0 +1,114 @@
+<html>
+<head>
+  <title>Lavaboom | Technical Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="keywords" content="Secure email provider free privacy encryption made simple">
+  <meta name="description" content="Lavaboom: Free secure email accounts for everyone. Secure email with zero-knowledge encryption and three-way authentication. ">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <!-- Piwik -->
+  <script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://nerd.lavaboom.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+  </script>
+  <noscript><p><img src="http://nerd.lavaboom.com/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+
+</head>
+<body>
+  <div class="mobile-menu-view">
+    <a id="close-mobile-menu"></a>
+    <ul class="mobile-menu-list">
+    </ul>
+  </div>
+
+  <nav class="desktop-menu">
+
+  </nav>
+  <div class="hidden-dragon">
+    <!-- CONTENT GOES BELOW -->
+<p class="No-Javascript">Heads up: You need to enable Javascript to enjoy this site.</p>
+
+<div class="container_2">
+  <div class="textbox_head">
+    <h1>Technical Details.</h1>
+  </div>
+  <div class="textbox_body">
+    <p>This is a brief overview of the technologies we use to protect users and our staff, as well as some background information regarding the laws we operate under and how we are funded. <a href="#">Last updated 5th January 2015</a>.</p>
+    <p>Our prime focus is accelerated client-side encryption, ease-of-use, and metadata obfuscation. This is achieved with Javascript cryptography, seamless key management, and an entirely new Email protocol. Though still under development, Lavaboom's entire codebase will be made open source software during our private beta.</p>
+  </div>
+  <div class="textbox_body">
+    <h3>OpenPGP.js</h3>
+    <p><a href="http://openpgpjs.org/" target="blank_">OpenPGP.js</a> is an open source PGP library for JavaScript. You can find out more <a href="https://github.com/openpgpjs/openpgpjs/wiki/Cure53-security-audit" target="blank_">on their wiki</a> and <a href="https://security.stackexchange.com/questions/38219/security-of-running-openpgp-js-in-a-browser-with-the-private-key-in-html5-locals" target="blank_">here.</a></p>
+  </div>
+  <div class="textbox_body">
+    <h3>Zero-knowledge architecture</h3>
+    <p>Our zero-knowledge policy means that we never store our users' private keys or unencrypted email on our servers, and that we minimize metadata as much as possible. No logs, no identity information leaked in metadata, no analytics.</p>
+  </div>
+  <div class="textbox_body">
+    <h3>Multiple-factor authentication</h3>
+    <p>At the very least, to be able to use Lavaboom you need to input your account password, your private key and your private key passphrase (<a href="http://www.pgpi.org/doc/pgpintro/#p23" target="blank_">what's a PGP passphrase?</a>). Additionally, premium users can choose to use different other authentication options, like <a href="https://www.yubico.com/" target="blank_">YubiKey</a> and mobile verification.</p>
+  </div>
+  <div class="textbox_body">
+    <h3>Open Source</h3>
+    <p>All of our code will be open-sourced and available on Github. We not only believe this is the right way to run a business, but this guarantees that you know what's running on our servers at any time. We are currently working on making the live executed JavaScript available for review. We also want to make it easy for you to run your own instance of Lavaboom on your server, using Docker or <a href="https://sandstorm.io/" target="blank_">Sandstorm</a>.</p>
+  </div>
+  <div class="textbox_body">
+    <h3>The key exchange</h3>
+    <p>Key management is one of the major weak points of PGP email, and we're very keen on solving this problem. Along SMTP and a regular key server we'll also support two new secure protocols, intermail and DarkMail.</p>
+  </div>
+  <div class="textbox_body">
+    <h3>Combatting threats</h3>
+    <p>The most important security pitfalls aren't technical, but have to do with user error and key mismanagement. This is why we need to find a compelling solution to the PGP email UX problem that has eluded people for more than 20 years [<a href="http://blog.cryptographyengineering.com/2014/08/whats-matter-with-pgp.html" target="blank_">link</a>].</p>
+    <p>We use OpenPGP.js to encrypt emails on the client side, and the user's public key to encrypt them server-side when they arrive unencrypted, so the data is never stored unencrypted.</p>
+    <p>Our basic threat scenario is that an attacker has gained control over our servers, or over a user's account (and private key). In the former case, even if they decrypt our partitions, then our database, they still won't get access to any emails, because we never store them unencrypted on our servers. In the latter case, to be able to use the user's data they'd have to break the private key's encryption, which is virtually impossible for good passwords (long, non-dictionary).</p>
+    <p>We circumvent MitM attacks by using HTTPS everywhere, even between our servers.</p>
+  </div>
+  <div class="textbox_body">
+    <h3>Servers</h3>
+    <p>We have servers in two datacenters in Germany. We don't have physical access to our servers, and we have a system in place that automatically destroys the hard drives as soon as someone tries to access them.</p>
+  </div>
+  <div class="textbox_body">
+    <h3>Legal framework</h3>
+    <p>We are based in Germany and are subject to German law. Lavaboom is required to request information from paying users such as their name and billing address. If a user is paying for an account with bitcoin, PayPal, Stripe or by cash they need to provide information, however we're not compelled to verify their information. Free users are only required to provide a name. Please see our <a href="terms">Terms and Conditions</a> and <a href="privacy">Privacy Policy</a> for more detail.</p>
+  </div>
+  <div class="textbox_body">
+    <h3>NSA-proof</h3>
+    <p>No email provider is 'NSA-proof'. While a zero-knowledge system has its benefits, please do not use our service if you believe that you are an NSA target, or could become one in the future. Lavaboom is suitable for combatting dragnet surveillance, corporate profiling and pesky hackers. Our security is better than Gmail, but you should not put your life in the hands of any email provider. We encourage members of the press to <a href="mailto:hello@lavaboom.me">get in touch</a> and learn more about encryption.</p>
+  </div>
+  <div class="textbox_body">
+    <h3>Funding</h3>
+    <p>We are totally self-funded and are currently not seeking investment.</p>
+  </div>
+  <div class="textbox_body">
+      <h3>Premium features</h3>
+    <p>We will be launching premium and business plans soon. Features will include multi-factor authentication, increased storage space and custom domain names (name@company.com). Please <a href="mailto:hello@lavaboom.me">get in touch</a> if you are interested in Lavaboom for your business.</p>
+  </div>
+  <div class="textbox_body">
+    <h3>Mobile and Desktop</h3>
+    <p>Native apps for iOS, Android, Mac, Windows and Linux are in the works.</p>
+  </div>
+  <div class="textbox_body">
+    <h3>Making an account</h3>
+    <p>We're currently in closed beta, but you can register for early access <a href=".">here</a>.</p>
+  </div>
+</div>
+
+<!-- END CONTENT -->
+</div>
+<div class="footer">
+</div>
+
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="Lavaboom-landing-Jan.js"></script>
+
+</body>
+</html>

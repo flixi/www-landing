@@ -1,0 +1,114 @@
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input[type="email"] {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 1px solid #fff;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	font-size: 16px;
+	font-weight: 200;
+	color: #606060;
+	height: 46px;
+	max-width: 100%!important;
+	width: 300px;
+	padding-left: 5;
+}
+textarea {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+	height: auto;
+	max-width: 100%!important;
+	padding: 24px;
+	width: 300px;
+}
+legend {
+	color: #333;
+	font-size: 22px
+}
+select {
+	height: inherit;
+	padding: 6px
+}
+html.-moz-select {
+	padding: 3px 5px
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="url"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+	background: #fff;
+	width: 300px;
+}
+button,
+.button,
+input.button,
+span.button,
+button.button,
+div.button,
+input[type="submit"],
+input[type="button"],
+.pagenav-prev a,
+.pagenav-next a,
+.readon{
+	background: #4dadd3;
+	border: none;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: 400;
+	height: 42px;
+	width: 300px;
+	line-height: 42px;
+	margin: 6 auto;
+	padding: 0 20px;
+	text-align: center;
+	-webkit-transition: all .1s ease-out;
+	-moz-transition: all .1s ease-out;
+	-o-transition: all .1s ease-out;
+	transition: all .1s ease-out
+}
+button:hover,
+.button:hover,
+input.button:hover,
+span.button:hover,
+button.button:hover,
+div.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+.pagenav-prev a:hover,
+.pagenav-next a:hover,
+.readon:hover {
+	background-color: #3fa3c2;
+	color: #fff
+}
+
+button:active,
+.button:active,
+input.button:active,
+span.button:active,
+button.button:active,
+div.button:active,
+input[type="submit"]:active,
+input[type="button"]:active,
+.pagenav-prev a:active,
+.pagenav-next a:active,
+.readon:active {
+	background-color: #3b9bb3;
+	outline: 0px;
+}
