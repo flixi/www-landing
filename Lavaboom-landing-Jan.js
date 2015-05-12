@@ -132,7 +132,7 @@ $(".username-text").keyup(function(event){
 var hasPrefix = function(str, prefix) {
   return (str.substring(0, prefix.length) === prefix);
 };
-
+/*
 $(".signup-button-2").click(function(event) {
   var url = "https://technical.lavaboom.com/subscribe";
   var submission = {
@@ -147,7 +147,7 @@ $(".signup-button-2").click(function(event) {
     url: url, submission: submission
   });
   $.post(url, submission, callback);
-});
+});*/
 
 
 $(document).ready(function() {
@@ -176,9 +176,24 @@ $(document).ready(function() {
         $('#res_form').hide();
         $('.success-box').fadeIn('slow');
         $('#success-box-text').append(data);
-      } else if(response.message == "Invalid request") {
-        $('#signup-error').append('Some fields are missing.');
+
+        var url = "https://technical.lavaboom.com/subscribe";
+        var submission = {
+          name: "undefined",
+          email: $('#fieldEmail').val(),
+          list: '79P4A9RzHUgK70tiFy8KaA',
+          boolean: true
+        };
+        var callback = function(data, textStatus, jqXHR) {
+        };
+        console.log({
+          url: url, submission: submission
+        });
+        $.post(url, submission, callback);
+      } else if(response.message == "Invalid username - it has to be at least 3 and at max 32 characters long") {
+        $('#signup-error').append('Invalid username - it has to be at least 3 and at max 32 characters long');
         $('#signup-error').fadeIn('fast');
+        $(".username").css('border','solid 1px #E84E1B');
       } else if(response.message == "Email already used") {
         $('#signup-error').append('Email address already used.');
         $('#signup-error').fadeIn('fast');
@@ -195,19 +210,12 @@ $(document).ready(function() {
         $('#signup-error').append('Usernames must be at least 2 characters long and can only contain letters, numbers, and full stops.');
         $('#signup-error').fadeIn('fast');
         $('.username').css('border','solid 1px #E84E1B');
-      } else if(hasPrefix(data, msg6)) {
-        $('#signup-error').append('Email addresses must be shorter than 64 characters.');
-        $('#signup-error').fadeIn('fast');
-        $('#fieldEmail').css('border','solid 1px #E84E1B');
-      } else if(hasPrefix(data, msg7)) {
-        $('#signup-error').append('Username length must be shorter than 32 characters.');
-        $('#signup-error').fadeIn('fast');
-        $('.username').css('border','solid 1px #E84E1B');
-
       }
       // console.log(data);
     };
-    $.post(url, submission, callback);
+    $.post(url, submission)
+      .done(function(msg) { callback(msg, null, null) })
+      .fail(function(xhr, textStatus, errorThrown) { callback(JSON.parse(xhr.responseText), textStatus, xhr) });
   });
 });
 
